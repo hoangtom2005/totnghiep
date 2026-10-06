@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070914">
+<meta name="description" content="Hoàng Tôm Store - cửa hàng công nghệ hiện đại">
+<title>HOÀNG TÔM STORE | Premium Digital Shop</title>
+
+
+<script>
+
+if (!sessionStorage.getItem("introDone")) {
+    window.location.replace("intro.html");
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --bg:#05060b;
+    --bg2:#080b14;
+    --card:rgba(15,18,31,.78);
+    --card2:#111626;
+    --text:#f7f8ff;
+    --muted:#9299ad;
+    --line:rgba(255,255,255,.09);
+    --purple:#7867ff;
+    --purple2:#a18fff;
+    --cyan:#3be7ff;
+    --pink:#ff4fd8;
+    --green:#4dffb1;
+    --danger:#ff5578;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(120,103,255,.12),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(59,231,255,.08),transparent 25%),
+        linear-gradient(180deg,#05060b,#080a12 45%,#05060b);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    opacity:.18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+button,input,select,textarea{font:inherit}
+button{border:0;cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1240px,92%);margin:auto}
+
+/* ================= HEADER ================= */
+header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    border-bottom:1px solid transparent;
+    background:rgba(5,6,11,.58);
+    backdrop-filter:blur(22px);
+    transition:.3s;
+}
+header.scrolled{
+    background:rgba(5,6,11,.9);
+    border-color:var(--line);
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+}
+.nav{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:19px;
+    font-weight:900;
+    letter-spacing:-.5px;
+}
+.logo-mark{
+    width:38px;height:38px;
+    border-radius:12px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+    box-shadow:0 0 28px rgba(120,103,255,.35);
+    font-size:13px;
+    color:white;
+}
+.logo span{
+    background:linear-gradient(90deg,#fff,var(--purple2),var(--cyan));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+.nav-links{display:flex;gap:30px}
+.nav-links a{
+    color:#aeb4c5;
+    font-size:14px;
+    transition:.25s;
+    position:relative;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:after{
+    content:"";
+    position:absolute;
+    left:0;right:100%;bottom:-8px;
+    height:2px;
+    background:linear-gradient(90deg,var(--purple),var(--cyan));
+    transition:.25s;
+}
+.nav-links a:hover:after{right:0}
+.nav-right{display:flex;align-items:center;gap:9px}
+.icon-btn,.cart-btn{
+    min-width:42px;height:42px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.045);
+    color:white;
+    border-radius:13px;
+    transition:.25s;
+}
+.icon-btn:hover,.cart-btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(120,103,255,.5);
+    background:rgba(120,103,255,.12);
+}
+.cart-btn{position:relative}
+.cart-count{
+    position:absolute;
+    top:-7px;right:-7px;
+    min-width:20px;height:20px;
+    padding:0 5px;
+    display:grid;place-items:center;
+    border-radius:20px;
+    background:linear-gradient(135deg,#ff477d,#ff6fc9);
+    font-size:10px;
+    font-weight:800;
+    box-shadow:0 0 18px rgba(255,71,125,.5);
+}
+
+/* ================= HERO ================= */
+.hero{
+    min-height:820px;
+    padding:150px 0 90px;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.02fr .98fr;
+    gap:55px;
+    align-items:center;
+}
+.hero-copy{position:relative;z-index:2}
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 13px;
+    border:1px solid rgba(120,103,255,.35);
+    background:rgba(120,103,255,.08);
+    border-radius:999px;
+    color:#c0baff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    margin-bottom:24px;
+}
+.live-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#4dffb1;
+    box-shadow:0 0 12px #4dffb1;
+    animation:pulse 1.5s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.6);opacity:.45}}
+.hero h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:.94;
+    letter-spacing:-4px;
+    margin-bottom:25px;
+}
+.gradient-text{
+    background:linear-gradient(90deg,#fff 5%,#9e91ff 42%,#3be7ff 72%,#fff);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shine 6s linear infinite;
+}
+@keyframes shine{to{background-position:250% center}}
+.hero-desc{
+    max-width:650px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.8;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{
+    min-height:48px;
+    padding:0 19px;
+    border-radius:14px;
+    color:white;
+    font-weight:800;
+    transition:.25s;
+}
+.btn-primary{
+    background:linear-gradient(135deg,#725eff,#9382ff);
+    box-shadow:0 15px 40px rgba(120,103,255,.25);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(120,103,255,.4)}
+.btn-dark{
+    background:rgba(255,255,255,.055);
+    border:1px solid var(--line);
+}
+.btn-dark:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.hero-stats{
+    display:flex;
+    gap:30px;
+    margin-top:42px;
+    flex-wrap:wrap;
+}
+.stat strong{display:block;font-size:21px}
+.stat span{display:block;color:#70778b;font-size:11px;margin-top:5px;letter-spacing:.5px}
+
+/* ================= 3D SHOWCASE ================= */
+.showcase{
+    height:500px;
+    position:relative;
+    perspective:1200px;
+    display:grid;
+    place-items:center;
+}
+.orbit{
+    position:absolute;
+    border:1px solid rgba(120,103,255,.18);
+    border-radius:50%;
+    transform:rotateX(68deg);
+    animation:orbit 10s linear infinite;
+}
+.orbit.o1{width:390px;height:390px}
+.orbit.o2{width:470px;height:470px;border-color:rgba(59,231,255,.1);animation-duration:15s;animation-direction:reverse}
+@keyframes orbit{to{transform:rotateX(68deg) rotateZ(360deg)}}
+.product-stage{
+    width:420px;height:420px;
+    position:relative;
+    display:grid;place-items:center;
+    transform-style:preserve-3d;
+    transition:transform .15s ease-out;
+}
+.stage-glow{
+    position:absolute;
+    width:260px;height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(120,103,255,.48),rgba(59,231,255,.08),transparent 68%);
+    filter:blur(12px);
+    animation:glow 3s ease-in-out infinite;
+}
+@keyframes glow{50%{transform:scale(1.22);opacity:.65}}
+.headphone{
+    width:250px;height:275px;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:float 4.5s ease-in-out infinite;
+    filter:drop-shadow(0 30px 25px rgba(0,0,0,.55));
+}
+@keyframes float{50%{transform:translateY(-13px) rotateY(10deg)}}
+.band{
+    position:absolute;
+    left:35px;top:10px;
+    width:180px;height:205px;
+    border:22px solid #262b3b;
+    border-bottom:0;
+    border-radius:110px 110px 0 0;
+    box-shadow:inset 4px 0 8px rgba(255,255,255,.08),0 -8px 35px rgba(120,103,255,.15);
+}
+.band:after{
+    content:"";
+    position:absolute;
+    left:9px;right:9px;top:0;
+    height:150px;
+    border:3px solid rgba(255,255,255,.08);
+    border-bottom:0;
+    border-radius:90px 90px 0 0;
+}
+.ear{
+    position:absolute;
+    top:125px;
+    width:78px;height:125px;
+    border-radius:38px;
+    background:linear-gradient(145deg,#3a4153,#10131c 70%);
+    box-shadow:inset 9px 0 18px rgba(255,255,255,.08),0 25px 35px rgba(0,0,0,.55);
+}
+.ear.left{left:0}.ear.right{right:0}
+.ear:before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border-radius:50%;
+    background:radial-gradient(circle at 40% 35%,#b3aaff,#6c5eff 35%,#161528 72%);
+    box-shadow:0 0 28px rgba(120,103,255,.65);
+}
+.ear:after{
+    content:"";
+    position:absolute;
+    inset:24px;
+    border:2px solid rgba(255,255,255,.16);
+    border-radius:50%;
+}
+.float-card{
+    position:absolute;
+    right:-5px;bottom:38px;
+    width:180px;
+    padding:13px;
+    border:1px solid var(--line);
+    background:rgba(11,14,24,.72);
+    backdrop-filter:blur(18px);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    animation:cardFloat 4s ease-in-out infinite;
+}
+@keyframes cardFloat{50%{transform:translateY(-8px)}}
+.float-card small{color:#7f8799;font-size:9px;letter-spacing:1px}
+.float-card strong{display:block;margin-top:5px}
+.rating{color:#ffd15a;font-size:12px;margin-top:6px}
+
+/* ================= MARQUEE ================= */
+.marquee{
+    overflow:hidden;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.02);
+}
+.marquee-track{
+    width:max-content;
+    display:flex;
+    gap:55px;
+    padding:18px 0;
+    animation:marquee 25s linear infinite;
+}
+.marquee-item{
+    color:#71798b;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+.marquee-item b{color:#bcb6ff}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ================= SECTIONS ================= */
+section{padding:90px 0}
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:30px;
+}
+.section-kicker{
+    color:#8e83ff;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:9px;
+}
+.section-head h2{font-size:clamp(30px,4vw,45px);letter-spacing:-1.5px}
+.section-head p{color:var(--muted);margin-top:8px;font-size:14px}
+.live-count{
+    color:#788095;
+    font-size:12px;
+    white-space:nowrap;
+}
+
+/* ================= TOOLBAR ================= */
+.shop-tools{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:12px;
+    margin-bottom:28px;
+}
+.search-wrap{position:relative}
+.search-wrap span{
+    position:absolute;
+    left:16px;top:50%;
+    transform:translateY(-50%);
+    color:#737b8f;
+}
+.search{
+    width:100%;height:50px;
+    padding:0 16px 0 45px;
+    color:white;
+    outline:none;
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--line);
+    border-radius:14px;
+    transition:.25s;
+}
+.search:focus{border-color:rgba(120,103,255,.7);box-shadow:0 0 0 4px rgba(120,103,255,.08)}
+.category{
+    height:50px;
+    min-width:190px;
+    padding:0 15px;
+    color:white;
+    background:#101421;
+    border:1px solid var(--line);
+    border-radius:14px;
+    outline:none;
+}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{
+    padding:9px 13px;
+    border-radius:999px;
+    color:#9299ab;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--line);
+    font-size:11px;
+    transition:.2s;
+}
+.chip.active,.chip:hover{
+    color:white;
+    border-color:rgba(120,103,255,.55);
+    background:rgba(120,103,255,.12);
+}
+
+/* ================= PRODUCTS ================= */
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+.product{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(17,21,35,.86),rgba(10,13,22,.9));
+    border-radius:21px;
+    transition:.35s;
+    box-shadow:0 12px 35px rgba(0,0,0,.14);
+}
+.product:before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    opacity:0;
+    background:linear-gradient(120deg,transparent,rgba(120,103,255,.2),transparent);
+    transition:.4s;
+    pointer-events:none;
+}
+.product:hover{
+    transform:translateY(-8px);
+    border-color:rgba(120,103,255,.4);
+    box-shadow:0 25px 65px rgba(0,0,0,.35),0 0 35px rgba(120,103,255,.08);
+}
+.product:hover:before{opacity:1}
+.product-media{
+    height:235px;
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(120,103,255,.18),transparent 45%),
+        linear-gradient(145deg,#151a2a,#0a0d16);
+}
+.product-media:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.07) 50%,transparent 65%);
+    transform:translateX(-120%);
+    transition:.7s;
+}
+.product:hover .product-media:after{transform:translateX(120%)}
+.visual{
+    position:relative;
+    width:145px;height:145px;
+    display:grid;place-items:center;
+    font-size:82px;
+    filter:drop-shadow(0 22px 22px rgba(0,0,0,.5));
+    transition:.4s;
+}
+.product:hover .visual{transform:scale(1.08) rotate(-3deg)}
+.visual:before{
+    content:"";
+    position:absolute;
+    inset:-20px;
+    border:1px solid rgba(120,103,255,.15);
+    border-radius:50%;
+    animation:spin 12s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sale{
+    position:absolute;
+    top:13px;left:13px;
+    padding:6px 8px;
+    border-radius:8px;
+    background:rgba(255,75,115,.13);
+    border:1px solid rgba(255,75,115,.25);
+    color:#ff7996;
+    font-size:9px;
+    font-weight:900;
+    z-index:2;
+}
+.wish{
+    position:absolute;
+    top:12px;right:12px;
+    width:34px;height:34px;
+    display:grid;place-items:center;
+    border-radius:10px;
+    color:#9299ab;
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.08);
+    z-index:2;
+}
+.wish.active{color:#ff5f88}
+.product-info{padding:17px}
+.product-category{font-size:9px;color:#8e83ff;letter-spacing:1.2px;font-weight:900;text-transform:uppercase}
+.product h3{font-size:16px;margin:8px 0 7px}
+.product-desc{
+    color:#777f92;
+    font-size:11px;
+    line-height:1.6;
+    min-height:36px;
+}
+.price-row{display:flex;align-items:center;gap:7px;margin:15px 0}
+.price{font-size:17px;font-weight:900}
+.old-price{font-size:10px;color:#626a7c;text-decoration:line-through}
+.product-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.product-actions button{
+    height:39px;
+    border-radius:10px;
+    color:white;
+    font-size:11px;
+    font-weight:800;
+}
+.view-btn{background:#171c2b;border:1px solid var(--line)}
+.add-btn{background:linear-gradient(135deg,#705eff,#8d7dff)}
+.view-btn:hover,.add-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.no-result{
+    grid-column:1/-1;
+    padding:70px 20px;
+    text-align:center;
+    border:1px dashed var(--line);
+    border-radius:20px;
+    color:#777f92;
+}
+
+/* ================= FEATURES ================= */
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+.feature{
+    padding:25px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+    transition:.3s;
+}
+.feature:hover{transform:translateY(-5px);background:rgba(255,255,255,.045)}
+.feature-icon{
+    width:46px;height:46px;
+    display:grid;place-items:center;
+    border-radius:14px;
+    background:rgba(120,103,255,.1);
+    border:1px solid rgba(120,103,255,.18);
+    font-size:20px;
+    margin-bottom:18px;
+}
+.feature h3{font-size:15px}
+.feature p{color:#7d8597;font-size:12px;line-height:1.7;margin-top:8px}
+
+/* ================= PROMO ================= */
+.promo{
+    position:relative;
+    overflow:hidden;
+    padding:55px;
+    border:1px solid rgba(120,103,255,.2);
+    border-radius:28px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(59,231,255,.16),transparent 25%),
+        radial-gradient(circle at 10% 100%,rgba(120,103,255,.2),transparent 35%),
+        rgba(15,18,31,.75);
+}
+.promo:after{
+    content:"";
+    position:absolute;
+    width:300px;height:300px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.07);
+    right:-100px;top:-130px;
+    box-shadow:0 0 0 40px rgba(255,255,255,.02),0 0 0 80px rgba(255,255,255,.015);
+}
+.promo h2{font-size:clamp(30px,4vw,48px);letter-spacing:-2px}
+.promo p{color:#838b9d;margin-top:10px;max-width:620px;line-height:1.7;font-size:13px}
+.promo .btn{margin-top:23px}
+
+/* ================= FOOTER ================= */
+footer{
+    border-top:1px solid var(--line);
+    padding:50px 0 30px;
+    color:#747c8f;
+}
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.8fr 1fr 1fr 1fr;
+    gap:30px;
+}
+footer h3{color:white;margin-bottom:13px}
+footer p,footer a{font-size:12px;line-height:1.8;color:#747c8f}
+footer a:hover{color:white}
+.copyright{
+    margin-top:35px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+/* ================= MODALS ================= */
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    padding:20px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(16px);
+}
+.overlay.show{display:flex;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{
+    width:min(900px,100%);
+    max-height:90vh;
+    overflow:auto;
+    position:relative;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    background:#0d111d;
+    box-shadow:0 35px 100px rgba(0,0,0,.6);
+    padding:25px;
+    animation:modalIn .25s ease;
+}
+@keyframes modalIn{from{transform:translateY(15px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.close{
+    position:absolute;
+    top:15px;right:15px;
+    width:38px;height:38px;
+    border-radius:11px;
+    color:white;
+    background:#171c2b;
+    border:1px solid var(--line);
+    z-index:3;
+    font-size:20px;
+}
+.modal-product{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:27px;
+}
+.modal-image{
+    min-height:390px;
+    display:grid;place-items:center;
+    border-radius:20px;
+    background:
+        radial-gradient(circle,rgba(120,103,255,.22),transparent 45%),
+        linear-gradient(145deg,#151a2a,#090c14);
+    font-size:145px;
+    position:relative;
+    overflow:hidden;
+}
+.modal-image:before,.modal-image:after{
+    content:"";
+    position:absolute;
+    width:250px;height:250px;
+    border:1px solid rgba(120,103,255,.18);
+    border-radius:50%;
+    animation:spin 10s linear infinite;
+}
+.modal-image:after{width:340px;height:340px;animation-direction:reverse}
+.modal-info{padding:25px 10px 10px}
+.modal-info .product-category{margin-bottom:10px}
+.modal-info h2{font-size:34px;letter-spacing:-1px;margin-bottom:12px}
+.modal-info .modal-price{font-size:25px;font-weight:900;margin:15px 0}
+.modal-info p{color:#838b9d;font-size:13px;line-height:1.8}
+.features{display:grid;gap:8px;margin:20px 0}
+.features div{
+    padding:11px 12px;
+    border-radius:10px;
+    background:#151a29;
+    border:1px solid rgba(255,255,255,.045);
+    color:#a4abbb;
+    font-size:11px;
+}
+
+/* CART */
+.cart-modal{width:min(760px,100%)}
+.cart-list{display:grid;gap:9px;margin:20px 0}
+.cart-item{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    align-items:center;
+    gap:14px;
+    padding:13px;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+    background:#141927;
+}
+.cart-name{font-weight:800;font-size:12px}
+.cart-price{font-size:10px;color:#7f8799;margin-top:5px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{
+    width:29px;height:29px;
+    border-radius:8px;
+    color:white;
+    background:#242b3c;
+}
+.remove{color:#ff6688;background:none;font-size:11px}
+.total{
+    border-top:1px solid var(--line);
+    padding-top:17px;
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:900;
+}
+.checkout{
+    display:grid;
+    gap:10px;
+    margin-top:20px;
+}
+.checkout input,.checkout textarea{
+    width:100%;
+    color:white;
+    outline:none;
+    padding:13px;
+    border-radius:11px;
+    border:1px solid var(--line);
+    background:#141927;
+}
+.checkout input:focus,.checkout textarea:focus{border-color:rgba(120,103,255,.6)}
+.checkout textarea{min-height:85px;resize:vertical}
+.empty-cart{
+    padding:45px 20px;
+    text-align:center;
+    color:#737b8d;
+}
+
+/* ================= TOAST ================= */
+.toast{
+    position:fixed;
+    right:20px;bottom:20px;
+    z-index:1000;
+    min-width:250px;
+    max-width:calc(100vw - 40px);
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid rgba(120,103,255,.35);
+    border-radius:14px;
+    background:rgba(13,17,29,.92);
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+    transform:translateY(30px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    font-size:12px;
+}
+.toast.show{transform:none;opacity:1}
+.toast-icon{font-size:17px}
+
+/* ================= BACK TOP ================= */
+.back-top{
+    position:fixed;
+    right:18px;bottom:78px;
+    width:42px;height:42px;
+    border-radius:13px;
+    color:white;
+    background:rgba(17,21,34,.8);
+    border:1px solid var(--line);
+    backdrop-filter:blur(15px);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:90;
+}
+.back-top.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ================= REVEAL ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible{opacity:1;transform:none}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1000px){
+    .products{grid-template-columns:repeat(3,1fr)}
+    .feature-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-grid{grid-template-columns:2fr 1fr 1fr}
+    .hero-grid{grid-template-columns:1fr}
+    .hero{padding-top:125px}
+    .showcase{height:430px}
+    .hero-copy{text-align:center}
+    .hero-desc{margin:auto}
+    .hero-actions,.hero-stats{justify-content:center}
+}
+@media(max-width:760px){
+    .nav{height:66px}
+    .nav-links{display:none}
+    .logo{font-size:16px}
+    .hero{min-height:auto;padding:120px 0 50px}
+    .hero h1{letter-spacing:-2.5px}
+    .showcase{height:390px}
+    .product-stage{transform:scale(.78)}
+    .float-card{right:-8px;bottom:15px}
+    .products{grid-template-columns:repeat(2,1fr)}
+    .shop-tools{grid-template-columns:1fr}
+    .category{width:100%}
+    .modal-product{grid-template-columns:1fr}
+    .modal-image{min-height:280px;font-size:105px}
+    .modal-info{padding:5px}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .copyright{flex-direction:column}
+}
+@media(max-width:500px){
+    .container{width:min(92%,420px)}
+    section{padding:65px 0}
+    .hero h1{font-size:48px}
+    .hero-desc{font-size:14px}
+    .hero-stats{gap:20px}
+    .showcase{height:330px}
+    .product-stage{transform:scale(.63)}
+    .orbit.o1{width:300px;height:300px}
+    .orbit.o2{width:350px;height:350px}
+    .float-card{transform:scale(.85)}
+    .products{grid-template-columns:1fr}
+    .feature-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+    .promo{padding:30px 22px}
+    .cart-item{grid-template-columns:1fr auto}
+    .cart-item .remove{grid-column:1/-1;text-align:left}
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="container nav">
+        <a class="logo" href="#home">
+            <span class="logo-mark">HT</span>
+            HOÀNG <span>TÔM STORE</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#why">Dịch vụ</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+
+        <div class="nav-right">
+            <button class="icon-btn" onclick="scrollToProducts()" title="Tìm sản phẩm">⌕</button>
+            <button class="cart-btn" onclick="openCart()">
+                🛒 <span class="cart-label">Giỏ hàng</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+    <div class="container hero-grid">
+
+        <div class="hero-copy reveal">
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                PREMIUM DIGITAL STORE · EST. 2026
+            </div>
+
+            <h1>
+                Công nghệ<br>
+                <span class="gradient-text">theo cách mới.</span>
+            </h1>
+
+            <p class="hero-desc">
+                Chào mừng đến với Hoàng Tôm Store — không gian mua sắm công nghệ
+                hiện đại, hiệu ứng mượt, sản phẩm nổi bật và trải nghiệm đặt hàng
+                trực tiếp ngay trên website.
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToProducts()">Khám phá sản phẩm →</button>
+                <button class="btn btn-dark" onclick="openProduct(1)">✨ Xem sản phẩm 3D</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat"><strong>20+</strong><span>SẢN PHẨM</span></div>
+                <div class="stat"><strong>24/7</strong><span>HỖ TRỢ</span></div>
+                <div class="stat"><strong>99%</strong><span>TRẢI NGHIỆM</span></div>
+            </div>
+        </div>
+
+        <div class="showcase reveal" id="showcase">
+            <div class="orbit o1"></div>
+            <div class="orbit o2"></div>
+
+            <div class="product-stage" id="productStage">
+                <div class="stage-glow"></div>
+
+                <div class="headphone">
+                    <div class="band"></div>
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                </div>
+            </div>
+
+            <div class="float-card">
+                <small>FEATURED PRODUCT</small>
+                <strong>Nova Headset X1</strong>
+                <div class="rating">★★★★★ <span style="color:#7d8597">4.9/5</span></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="marquee">
+    <div class="marquee-track">
+        <div class="marquee-item">⚡ <b>NEW DROP</b></div>
+        <div class="marquee-item">PREMIUM QUALITY</div>
+        <div class="marquee-item">FAST DELIVERY</div>
+        <div class="marquee-item">SECURE ORDER</div>
+        <div class="marquee-item">GAMING · AUDIO · PHONE · LAPTOP</div>
+        <div class="marquee-item">⚡ <b>NEW DROP</b></div>
+        <div class="marquee-item">PREMIUM QUALITY</div>
+        <div class="marquee-item">FAST DELIVERY</div>
+        <div class="marquee-item">SECURE ORDER</div>
+        <div class="marquee-item">GAMING · AUDIO · PHONE · LAPTOP</div>
+    </div>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <div class="section-kicker">THE COLLECTION</div>
+                <h2>Sản phẩm nổi bật</h2>
+                <p>Chọn món đồ công nghệ phù hợp với bạn.</p>
+            </div>
+            <div class="live-count" id="resultCount">0 sản phẩm</div>
+        </div>
+
+        <div class="shop-tools reveal">
+            <div class="search-wrap">
+                <span>⌕</span>
+                <input class="search" id="search" placeholder="Tìm tên sản phẩm, danh mục..." autocomplete="off">
+            </div>
+            <select class="category" id="category">
+                <option value="all">Tất cả danh mục</option>
+                <option value="audio">🎧 Âm thanh</option>
+                <option value="phone">📱 Điện thoại</option>
+                <option value="laptop">💻 Laptop</option>
+                <option value="gaming">🎮 Gaming</option>
+                <option value="accessory">🔌 Phụ kiện</option>
+            </select>
+        </div>
+
+        <div class="chips reveal">
+            <button class="chip active" data-cat="all">Tất cả</button>
+            <button class="chip" data-cat="audio">🎧 Âm thanh</button>
+            <button class="chip" data-cat="phone">📱 Điện thoại</button>
+            <button class="chip" data-cat="laptop">💻 Laptop</button>
+            <button class="chip" data-cat="gaming">🎮 Gaming</button>
+            <button class="chip" data-cat="accessory">🔌 Phụ kiện</button>
+        </div>
+
+        <div class="products" id="productsList"></div>
+    </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section id="why">
+    <div class="container">
+        <div class="section-head reveal">
+            <div>
+                <div class="section-kicker">WHY HOÀNG TÔM</div>
+                <h2>Mua hàng đơn giản hơn.</h2>
+                <p>Mọi thứ cần thiết cho một cửa hàng online hiện đại.</p>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature reveal">
+                <div class="feature-icon">⚡</div>
+                <h3>Giao diện siêu mượt</h3>
+                <p>Animation, hover, modal và hiệu ứng chuyển động được tối ưu để website nhìn sống động hơn.</p>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-icon">🛒</div>
+                <h3>Giỏ hàng thông minh</h3>
+                <p>Tăng giảm số lượng, xóa sản phẩm, tính tổng tiền và lưu giỏ hàng bằng trình duyệt.</p>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-icon">🔐</div>
+                <h3>Đặt hàng rõ ràng</h3>
+                <p>Khách nhập họ tên, số điện thoại và địa chỉ trước khi gửi đơn hàng.</p>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-icon">📱</div>
+                <h3>Responsive</h3>
+                <p>Hoạt động tốt trên máy tính, tablet và điện thoại với layout tự động thay đổi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PROMO ================= -->
+<section>
+    <div class="container">
+        <div class="promo reveal">
+            <div class="section-kicker">HOÀNG TÔM STORE</div>
+            <h2>Build your setup.<br><span class="gradient-text">Make it yours.</span></h2>
+            <p>
+                Từ tai nghe, laptop, điện thoại đến đồ gaming — khám phá bộ sưu tập
+                và thêm sản phẩm vào giỏ chỉ với một cú click.
+            </p>
+            <button class="btn btn-primary" onclick="scrollToProducts()">Xem toàn bộ sản phẩm</button>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>HOÀNG TÔM STORE</h3>
+                <p>
+                    Cửa hàng công nghệ giao diện hiện đại.
+                    Website có thể tiếp tục kết nối Firebase để lưu tài khoản,
+                    đơn hàng và dữ liệu sản phẩm thật.
+                </p>
+            </div>
+            <div>
+                <h3>Mua hàng</h3>
+                <p><a href="#products">Sản phẩm</a></p>
+                <p><a href="#" onclick="openCart();return false">Giỏ hàng</a></p>
+                <p><a href="#why">Dịch vụ</a></p>
+            </div>
+            <div>
+                <h3>Danh mục</h3>
+                <p><a href="#products" onclick="setCategory('audio')">Âm thanh</a></p>
+                <p><a href="#products" onclick="setCategory('gaming')">Gaming</a></p>
+                <p><a href="#products" onclick="setCategory('laptop')">Laptop</a></p>
+            </div>
+            <div>
+                <h3>Liên hệ</h3>
+                <p>📧 support@hoangtom.store</p>
+                <p>💬 Hỗ trợ trực tuyến</p>
+                <p>⚡ Phản hồi nhanh</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <span>© 2026 Hoàng Tôm Store. All rights reserved.</span>
+            <span>PREMIUM DIGITAL EXPERIENCE</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ================= PRODUCT MODAL ================= -->
+<div class="overlay" id="productModal" onclick="overlayClose(event,'productModal')">
+    <div class="modal">
+        <button class="close" onclick="closeModal('productModal')">×</button>
+        <div class="modal-product">
+            <div class="modal-image" id="modalImage">🎧</div>
+            <div class="modal-info">
+                <div class="product-category" id="modalCategory">ÂM THANH</div>
+                <h2 id="modalName">Nova Headset X1</h2>
+                <div class="modal-price" id="modalPrice">1.990.000₫</div>
+                <p id="modalDesc"></p>
+                <div class="features" id="modalFeatures"></div>
+                <button class="btn btn-primary" style="width:100%" onclick="addCurrentProduct()">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= CART MODAL ================= -->
+<div class="overlay" id="cartModal" onclick="overlayClose(event,'cartModal')">
+    <div class="modal cart-modal">
+        <button class="close" onclick="closeModal('cartModal')">×</button>
+        <h2>🛒 Giỏ hàng</h2>
+        <div class="cart-list" id="cartList"></div>
+
+        <div class="total">
+            <span>Tổng cộng</span>
+            <span id="cartTotal">0₫</span>
+        </div>
+
+        <div class="checkout">
+            <input id="customerName" placeholder="Họ và tên *">
+            <input id="customerPhone" placeholder="Số điện thoại *" inputmode="tel">
+            <textarea id="customerAddress" placeholder="Địa chỉ nhận hàng *"></textarea>
+            <button class="btn btn-primary" onclick="placeOrder()">📦 Xác nhận đặt hàng</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">✓</span>
+    <span id="toastText">Đã thêm vào giỏ hàng</span>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* =========================================================
+   PRODUCT DATA
+========================================================= */
+const products = [
+    {
+        id:1,
+        name:"Nova Headset X1",
+        category:"audio",
+        categoryName:"Âm thanh",
+        price:1990000,
+        oldPrice:2490000,
+        icon:"🎧",
+        desc:"Tai nghe gaming không dây cao cấp, âm thanh sống động và thiết kế RGB hiện đại.",
+        features:["🎧 Stereo Hi-Res Audio","🔋 Pin lên đến 40 giờ","💡 RGB tùy chỉnh","🎮 PC / PS5 / Mobile"]
+    },
+    {
+        id:2,
+        name:"Nova Phone Pro",
+        category:"phone",
+        categoryName:"Điện thoại",
+        price:12990000,
+        oldPrice:14990000,
+        icon:"📱",
+        desc:"Điện thoại màn hình OLED 120Hz, camera sắc nét và hiệu năng mạnh mẽ.",
+        features:["📱 OLED 120Hz","📸 Camera AI thế hệ mới","⚡ Hiệu năng cao","🔋 Sạc nhanh"]
+    },
+    {
+        id:3,
+        name:"NovaBook Air",
+        category:"laptop",
+        categoryName:"Laptop",
+        price:18990000,
+        oldPrice:21990000,
+        icon:"💻",
+        desc:"Laptop mỏng nhẹ dành cho học tập, làm việc và giải trí hàng ngày.",
+        features:["💻 Thiết kế siêu mỏng","⚡ CPU hiệu năng cao","🔋 Pin lâu","🖥️ Màn hình sắc nét"]
+    },
+    {
+        id:4,
+        name:"Nova Gaming Mouse",
+        category:"gaming",
+        categoryName:"Gaming",
+        price:790000,
+        oldPrice:990000,
+        icon:"🖱️",
+        desc:"Chuột gaming nhẹ, cảm biến chính xác và RGB tùy chỉnh.",
+        features:["🎯 Cảm biến chính xác","🪶 Siêu nhẹ","🌈 RGB","⚡ Polling rate cao"]
+    },
+    {
+        id:5,
+        name:"Nova Keyboard K1",
+        category:"gaming",
+        categoryName:"Gaming",
+        price:1290000,
+        oldPrice:1590000,
+        icon:"⌨️",
+        desc:"Bàn phím cơ gaming với switch nhanh, âm thanh gõ đã tai và RGB.",
+        features:["⌨️ Mechanical Switch","🌈 RGB Per-Key","🎮 Gaming Mode","🔌 USB-C"]
+    },
+    {
+        id:6,
+        name:"Nova Buds Pro",
+        category:"audio",
+        categoryName:"Âm thanh",
+        price:1490000,
+        oldPrice:1790000,
+        icon:"🎵",
+        desc:"Tai nghe Bluetooth nhỏ gọn với chống ồn chủ động và hộp sạc tiện lợi.",
+        features:["🎵 ANC chống ồn","🔋 32 giờ cả hộp","📡 Bluetooth 5.x","💦 Kháng nước"]
+    },
+    {
+        id:7,
+        name:"Nova Phone Mini",
+        category:"phone",
+        categoryName:"Điện thoại",
+        price:6990000,
+        oldPrice:7990000,
+        icon:"📲",
+        desc:"Điện thoại nhỏ gọn, hiệu năng ổn định và camera đẹp.",
+        features:["📱 Màn hình 120Hz","📸 Camera kép","⚡ Chip tiết kiệm điện","🔋 Pin tối ưu"]
+    },
+    {
+        id:8,
+        name:"NovaBook Gaming",
+        category:"laptop",
+        categoryName:"Laptop",
+        price:27990000,
+        oldPrice:30990000,
+        icon:"🖥️",
+        desc:"Laptop gaming mạnh mẽ dành cho game thủ và sáng tạo nội dung.",
+        features:["🎮 GPU mạnh","🖥️ Màn hình tần số cao","❄️ Tản nhiệt gaming","⌨️ RGB Keyboard"]
+    },
+    {
+        id:9,
+        name:"Nova Power Hub",
+        category:"accessory",
+        categoryName:"Phụ kiện",
+        price:590000,
+        oldPrice:750000,
+        icon:"🔌",
+        desc:"Hub mở rộng nhiều cổng kết nối cho laptop và setup cá nhân.",
+        features:["🔌 USB-C Hub","⚡ PD Fast Charge","🖥️ HDMI","💾 Data tốc độ cao"]
+    },
+    {
+        id:10,
+        name:"Nova RGB Desk Light",
+        category:"accessory",
+        categoryName:"Phụ kiện",
+        price:690000,
+        oldPrice:890000,
+        icon:"💡",
+        desc:"Đèn bàn RGB giúp góc setup nổi bật hơn với nhiều chế độ ánh sáng.",
+        features:["🌈 RGB nhiều hiệu ứng","🎚️ Điều chỉnh độ sáng","🖥️ Setup Mode","🔌 USB Powered"]
+    },
+    {
+        id:11,
+        name:"Nova Gamepad X",
+        category:"gaming",
+        categoryName:"Gaming",
+        price:990000,
+        oldPrice:1190000,
+        icon:"🎮",
+        desc:"Tay cầm không dây cho PC và mobile với độ trễ thấp.",
+        features:["🎮 Wireless","⚡ Low Latency","📳 Rung phản hồi","📱 Mobile Support"]
+    },
+    {
+        id:12,
+        name:"Nova Smart Watch",
+        category:"accessory",
+        categoryName:"Phụ kiện",
+        price:1690000,
+        oldPrice:1990000,
+        icon:"⌚",
+        desc:"Đồng hồ thông minh màn hình sáng, thiết kế gọn và nhiều tiện ích.",
+        features:["⌚ Always-On Display","🔔 Thông báo thông minh","🔋 Pin nhiều ngày","💧 Chống nước"]
+    }
+];
+
+/* =========================================================
+   STATE
+========================================================= */
+let cart = JSON.parse(localStorage.getItem("hoangTomCart") || "[]");
+let wishlist = JSON.parse(localStorage.getItem("hoangTomWishlist") || "[]");
+let currentProduct = null;
+let toastTimer = null;
+
+/* =========================================================
+   HELPERS
+========================================================= */
+const money = value => new Intl.NumberFormat("vi-VN",{
+    style:"currency",
+    currency:"VND"
+}).format(value);
+
+function saveState(){
+    localStorage.setItem("hoangTomCart",JSON.stringify(cart));
+    localStorage.setItem("hoangTomWishlist",JSON.stringify(wishlist));
+}
+
+function scrollToProducts(){
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
+}
+
+function setCategory(cat){
+    document.getElementById("category").value = cat;
+    document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===cat));
+    renderProducts();
+}
+
+function showToast(text,icon="✓"){
+    const toast=document.getElementById("toast");
+    document.getElementById("toastText").textContent=text;
+    document.getElementById("toastIcon").textContent=icon;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>toast.classList.remove("show"),2200);
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+function renderProducts(){
+    const list=document.getElementById("productsList");
+    const search=document.getElementById("search").value.trim().toLowerCase();
+    const category=document.getElementById("category").value;
+
+    const filtered=products.filter(p=>{
+        const text=(p.name+" "+p.categoryName+" "+p.desc).toLowerCase();
+        return text.includes(search) && (category==="all" || p.category===category);
+    });
+
+    document.getElementById("resultCount").textContent=`${filtered.length} sản phẩm`;
+
+    if(!filtered.length){
+        list.innerHTML=`<div class="no-result">🔎<br><br>Không tìm thấy sản phẩm phù hợp.<br><small>Thử từ khóa khác nhé.</small></div>`;
+        return;
+    }
+
+    list.innerHTML=filtered.map(p=>{
+        const wished=wishlist.includes(p.id);
+        const discount=Math.max(1,Math.round((1-p.price/p.oldPrice)*100));
+
+        return `
+        <article class="product reveal visible">
+            <div class="product-media">
+                <span class="sale">-${discount}%</span>
+                <button class="wish ${wished?"active":""}" onclick="toggleWish(${p.id})">${wished?"♥":"♡"}</button>
+                <div class="visual">${p.icon}</div>
+            </div>
+
+            <div class="product-info">
+                <div class="product-category">${p.categoryName}</div>
+                <h3>${p.name}</h3>
+                <div class="product-desc">${p.desc}</div>
+
+                <div class="price-row">
+                    <span class="price">${money(p.price)}</span>
+                    <span class="old-price">${money(p.oldPrice)}</span>
+                </div>
+
+                <div class="product-actions">
+                    <button class="view-btn" onclick="openProduct(${p.id})">Xem chi tiết</button>
+                    <button class="add-btn" onclick="addToCart(${p.id})">+ Giỏ hàng</button>
+                </div>
+            </div>
+        </article>`;
+    }).join("");
+}
+
+function toggleWish(id){
+    if(wishlist.includes(id)){
+        wishlist=wishlist.filter(x=>x!==id);
+        showToast("Đã bỏ khỏi yêu thích","♡");
+    }else{
+        wishlist.push(id);
+        showToast("Đã thêm vào yêu thích","♥");
+    }
+    saveState();
+    renderProducts();
+}
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+function openProduct(id){
+    const p=products.find(x=>x.id===id);
+    if(!p)return;
+
+    currentProduct=p;
+    document.getElementById("modalImage").textContent=p.icon;
+    document.getElementById("modalCategory").textContent=p.categoryName;
+    document.getElementById("modalName").textContent=p.name;
+    document.getElementById("modalPrice").textContent=money(p.price);
+    document.getElementById("modalDesc").textContent=p.desc;
+    document.getElementById("modalFeatures").innerHTML=p.features.map(x=>`<div>${x}</div>`).join("");
+    document.getElementById("productModal").classList.add("show");
+    document.body.style.overflow="hidden";
+}
+
+function addCurrentProduct(){
+    if(!currentProduct)return;
+    addToCart(currentProduct.id);
+    closeModal("productModal");
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.remove("show");
+    if(!document.querySelector(".overlay.show"))document.body.style.overflow="";
+}
+
+function overlayClose(e,id){
+    if(e.target.id===id)closeModal(id);
+}
+
+/* =========================================================
+   CART
+========================================================= */
+function addToCart(id){
+    const item=cart.find(x=>x.id===id);
+
+    if(item)item.qty++;
+    else cart.push({id,qty:1});
+
+    saveState();
+    updateCart();
+    showToast("Đã thêm sản phẩm vào giỏ hàng","🛒");
+
+    const btn=document.querySelector(".cart-btn");
+    btn.animate(
+        [{transform:"scale(1)"},{transform:"scale(1.08)"},{transform:"scale(1)"}],
+        {duration:300}
+    );
+}
+
+function updateCart(){
+    const count=cart.reduce((sum,item)=>sum+item.qty,0);
+    document.getElementById("cartCount").textContent=count;
+}
+
+function openCart(){
+    renderCart();
+    document.getElementById("cartModal").classList.add("show");
+    document.body.style.overflow="hidden";
+}
+
+function renderCart(){
+    const list=document.getElementById("cartList");
+
+    if(!cart.length){
+        list.innerHTML=`<div class="empty-cart">🛒<br><br>Giỏ hàng đang trống.<br><small>Hãy chọn vài món công nghệ nhé.</small></div>`;
+        document.getElementById("cartTotal").textContent=money(0);
+        return;
+    }
+
+    let total=0;
+
+    list.innerHTML=cart.map(item=>{
+        const p=products.find(x=>x.id===item.id);
+        if(!p)return "";
+
+        const itemTotal=p.price*item.qty;
+        total+=itemTotal;
+
+        return `
+        <div class="cart-item">
+            <div>
+                <div class="cart-name">${p.icon} ${p.name}</div>
+                <div class="cart-price">${money(p.price)} / sản phẩm</div>
+            </div>
+
+            <div class="qty">
+                <button onclick="changeQty(${p.id},-1)">−</button>
+                <b>${item.qty}</b>
+                <button onclick="changeQty(${p.id},1)">+</button>
+            </div>
+
+            <button class="remove" onclick="removeItem(${p.id})">Xóa</button>
+        </div>`;
+    }).join("");
+
+    document.getElementById("cartTotal").textContent=money(total);
+}
+
+function changeQty(id,value){
+    const item=cart.find(x=>x.id===id);
+    if(!item)return;
+
+    item.qty+=value;
+    if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+
+    saveState();
+    updateCart();
+    renderCart();
+}
+
+function removeItem(id){
+    cart=cart.filter(x=>x.id!==id);
+    saveState();
+    updateCart();
+    renderCart();
+    showToast("Đã xóa sản phẩm","🗑️");
+}
+
+/* =========================================================
+   ORDER
+========================================================= */
+function placeOrder(){
+    if(!cart.length){
+        showToast("Giỏ hàng đang trống","🛒");
+        return;
+    }
+
+    const name=document.getElementById("customerName").value.trim();
+    const phone=document.getElementById("customerPhone").value.trim();
+    const address=document.getElementById("customerAddress").value.trim();
+
+    if(!name || !phone || !address){
+        showToast("Vui lòng nhập đầy đủ thông tin","⚠️");
+        return;
+    }
+
+    const phoneClean=phone.replace(/\s/g,"");
+    if(!/^(0|\+84)\d{8,10}$/.test(phoneClean)){
+        showToast("Số điện thoại chưa đúng định dạng","⚠️");
+        return;
+    }
+
+    const order={
+        id:"HT"+Date.now(),
+        customer:{name,phone,address},
+        items:[...cart],
+        createdAt:new Date().toISOString()
+    };
+
+    const orders=JSON.parse(localStorage.getItem("hoangTomOrders") || "[]");
+    orders.push(order);
+    localStorage.setItem("hoangTomOrders",JSON.stringify(orders));
+
+    cart=[];
+    saveState();
+    updateCart();
+    renderCart();
+
+    document.getElementById("customerName").value="";
+    document.getElementById("customerPhone").value="";
+    document.getElementById("customerAddress").value="";
+
+    closeModal("cartModal");
+
+    setTimeout(()=>{
+        alert(
+            "🎉 ĐẶT HÀNG THÀNH CÔNG!\n\n"+
+            "Mã đơn: "+order.id+"\n"+
+            "Khách hàng: "+name+"\n\n"+
+            "Cảm ơn bạn đã mua hàng tại HOÀNG TÔM STORE."
+        );
+    },120);
+}
+
+/* =========================================================
+   EVENTS
+========================================================= */
+document.getElementById("search").addEventListener("input",renderProducts);
+
+document.getElementById("category").addEventListener("change",e=>{
+    document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===e.target.value));
+    renderProducts();
+});
+
+document.querySelectorAll(".chip").forEach(chip=>{
+    chip.addEventListener("click",()=>{
+        document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+        chip.classList.add("active");
+        document.getElementById("category").value=chip.dataset.cat;
+        renderProducts();
+    });
+});
+
+document.addEventListener("keydown",e=>{
+    if(e.key==="Escape"){
+        document.querySelectorAll(".overlay.show").forEach(x=>x.classList.remove("show"));
+        document.body.style.overflow="";
+    }
+});
+
+/* Header + back top */
+window.addEventListener("scroll",()=>{
+    const header=document.getElementById("header");
+    const back=document.getElementById("backTop");
+
+    header.classList.toggle("scrolled",window.scrollY>25);
+    back.classList.toggle("show",window.scrollY>500);
+});
+
+/* Reveal on scroll */
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+},{threshold:.08});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* 3D mouse tilt */
+const stage=document.getElementById("productStage");
+const showcase=document.getElementById("showcase");
+
+showcase.addEventListener("mousemove",e=>{
+    const rect=showcase.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width-.5;
+    const y=(e.clientY-rect.top)/rect.height-.5;
+
+    stage.style.transform=
+        `rotateX(${(-y*10).toFixed(2)}deg) rotateY(${(x*14).toFixed(2)}deg)`;
+});
+
+showcase.addEventListener("mouseleave",()=>{
+    stage.style.transform="rotateX(0deg) rotateY(0deg)";
+});
+
+/* =========================================================
+   START
+========================================================= */
+renderProducts();
+updateCart();
+
+
+</script>
+
+</body>
+</html>
